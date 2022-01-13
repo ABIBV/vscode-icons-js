@@ -15,7 +15,7 @@ A forked project from [vscode-icons-js](https://github.com/dderevjanik/vscode-ic
 ## Usage
 
 ```typescript
-import { getIconForFile, getIconForFolder, getIconForOpenFolder } from 'vscode-icons-js';
+import { getIconForFile, getIconForFolder, getIconForOpenFolder } from '@abibv/vscode-icons-js';
 
 console.log(getIconForFile('main.cpp'));
 // file_type_cpp.svg
