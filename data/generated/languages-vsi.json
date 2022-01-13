@@ -200,9 +200,6 @@
   "dockerfile": {
     "defaultExtension": "dockerfile"
   },
-  "dockerignore": {
-    "defaultExtension": "dockerignore"
-  },
   "doctex": {
     "defaultExtension": "dtx"
   },
@@ -292,6 +289,9 @@
   },
   "go": {
     "defaultExtension": "go"
+  },
+  "goctl": {
+    "defaultExtension": "api"
   },
   "godot": {
     "defaultExtension": "gd"
@@ -793,6 +793,9 @@
   },
   "tiltfile": {
     "defaultExtension": "Tiltfile"
+  },
+  "toit": {
+    "defaultExtension": "toit"
   },
   "toml": {
     "defaultExtension": "toml"

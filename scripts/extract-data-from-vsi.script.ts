@@ -3,14 +3,11 @@
  * Create Icons Data, which will be used in runtime as dictionary where `key` is name of folder
  * we want icon for and `value` is icon's filename.
  */
-import * as log4js from 'log4js';
 import fetch from 'node-fetch';
 import { script } from './utils';
 import { writeFileSync } from 'fs';
 import { basename, extname } from "path"
 
-const log = log4js.getLogger(basename(__filename, extname(__filename)));
-log.level = "debug";
 
 const LANG_URL = 'https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/src/iconsManifest/languages.ts';
 
@@ -36,5 +33,4 @@ fetch(LANG_URL, {})
         });
         const languagesJSON = JSON.stringify(languages, null, 2);
         writeFileSync('./data/generated/languages-vsi.json', languagesJSON);
-        log.info("successfully downloaded and generated language definitions");
     });

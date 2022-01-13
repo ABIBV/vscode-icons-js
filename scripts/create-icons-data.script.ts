@@ -2,15 +2,10 @@
  * Script will create json data, which contains dictionaries for runtime,
  * where `key` is name of folder we want icon for and `value` is icon's filename.
  */
-import * as log4js from "log4js";
 import { readFileSync, createWriteStream } from 'fs';
 import { basename, extname } from "path"
 
-const log = log4js.getLogger(basename(__filename, extname(__filename)));
-log.level = "debug";
 
-// Open icon definitions
-log.debug("opening icon definitions");
 
 const iconsJSONFile = readFileSync('./data/generated/icons.json');
 const vsiLanguagesFile = readFileSync('./data/generated/languages-vsi.json');
@@ -19,7 +14,6 @@ const PATH_ICONSDATA = './src/generated/';
 type IconKey = string;
 
 // Parse icon definitions
-log.debug("parsing icon definitions");
 const icons = JSON.parse(iconsJSONFile.toString()) as {
     iconDefinitions: { [iconKey: string]: { iconPath: string } },
     folderNames: { [folderName: string]: IconKey },
@@ -63,7 +57,6 @@ function getIconPath(icon: string) {
 
 // FolderNames to Icon
 (async function() {
-    log.debug("creating table for foldernames");
     const folderIcons = createWriteStream(PATH_ICONSDATA + 'FolderNamesToIcon.ts', { flags: 'w'});
     folderIcons.write(`export const FolderNamesToIcon: { [key: string]: string } = {\n`);
     for (const [folderName, icon] of Object.entries(icons.light.folderNames)) {
@@ -75,7 +68,6 @@ function getIconPath(icon: string) {
 
 // FileExtensions to Icon
 (async function() {
-    log.debug("creating table for filextensions");
     const fileExtensions1 = createWriteStream(PATH_ICONSDATA + 'FileExtensions1ToIcon.ts', { flags: 'w'});
     const fileExtensions2 = createWriteStream(PATH_ICONSDATA + 'FileExtensions2ToIcon.ts', { flags: 'w'});
     fileExtensions1.write(`export const FileExtensions1ToIcon: { [key: string]: string } = {\n`);
@@ -96,7 +88,6 @@ function getIconPath(icon: string) {
 
 // FileNames to Icon
 (async function() {
-    log.debug("creating table for filenames");
     const alreadyIncludedNames: string[] = [];
     const filenames = createWriteStream(PATH_ICONSDATA + 'FileNamesToIcon.ts', { flags: 'w' });
     filenames.write(`export const FileNamesToIcon: { [key: string]: string } = {\n`);
@@ -122,7 +113,6 @@ function getIconPath(icon: string) {
 
 // Languages to Icon
 (async function() {
-    log.debug("creating table for languages");
     const alreadyIncludedLangs: string[] = [];
     const languages = createWriteStream(PATH_ICONSDATA + 'LanguagesToIcon.ts', { flags: 'w' });
     languages.write(`export const LanguagesToIcon: { [key: string]: string } = {\n`);
