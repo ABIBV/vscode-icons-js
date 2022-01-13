@@ -4,8 +4,6 @@ A forked project from [vscode-icons-js](https://github.com/dderevjanik/vscode-ic
 ](https://github.com/dderevjanik)
 
 ## Changes
-
-  * Added icons
   * Removed log4js
 
 ## Installation
@@ -14,11 +12,16 @@ A forked project from [vscode-icons-js](https://github.com/dderevjanik/vscode-ic
 
 ## Usage
 
+* To use in your project, download or clone this repo [vscode-icons](https://github.com/vscode-icons/vscode-icons), then copy the `icons/` folder to your project directory.
+
+* Add the path to the `icons/` folder before the filename
+
 ```typescript
 import { getIconForFile, getIconForFolder, getIconForOpenFolder } from '@abibv/vscode-icons-js';
 
-console.log(getIconForFile('main.cpp'));
-// file_type_cpp.svg
+const file = `/path_to_the_icons_folder/${getIconForFile('main.cpp')}`;
+console.log(file);
+// /path_to_the_icons_folder/file_type_cpp.svg
 ```
 
 ## Example from source repo
